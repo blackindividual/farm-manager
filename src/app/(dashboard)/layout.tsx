@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import DashboardNav from '@/components/DashboardNav'
 
 export default function DashboardLayout({
   children,
@@ -6,26 +7,20 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen flex">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white p-4">
-        <nav className="space-y-2">
-          <a href="/dashboard" className="block py-2 px-4 rounded hover:bg-gray-700">
-            Overview
-          </a>
-          <a href="/dashboard/batches" className="block py-2 px-4 rounded hover:bg-gray-700">
-            Batches
-          </a>
-          <a href="/dashboard/reports" className="block py-2 px-4 rounded hover:bg-gray-700">
-            Reports
-          </a>
-          {/* Add more navigation items */}
-        </nav>
+    <div className="min-h-screen flex bg-background">
+      {/* Keep our existing sidebar */}
+      <aside className="w-64 bg-gray-800 text-white">
+        <div className="p-4">
+          <h1 className="text-xl font-bold">Farm Manager</h1>
+        </div>
+        <DashboardNav />
       </aside>
 
-      {/* Main content */}
-      <main className="flex-1 p-8">
-        {children}
+      {/* New main content area */}
+      <main className="flex-1">
+        <div className="h-full">
+          {children}
+        </div>
       </main>
     </div>
   )
