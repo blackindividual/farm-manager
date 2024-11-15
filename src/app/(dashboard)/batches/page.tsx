@@ -1,10 +1,15 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
-import { Button } from '../../components/ui/button'
-import { PlusCircle } from 'lucide-react' // Ensure lucide-react is installed for icons
-import { NewBatchDialog } from '../../components/batches/NewBatchDialog'
+import { Button } from "@/components/ui/button"
+import { PlusCircle } from 'lucide-react'
+import { NewBatchDialog } from '@/components/batches/NewBatchDialog'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import toast from 'react-hot-toast'
 
 export default function BatchManagement() {
