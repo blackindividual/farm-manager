@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Animal {
+  id          String    @id @default(cuid())
+  name        String
+  type        String
+  breed       String?
+  birthDate   DateTime?
+  gender      String?
+  weight      Float?
+  status      String?
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  healthRecords HealthRecord[]
+}
+
+model HealthRecord {
+  id          String   @id @default(cuid())
+  animalId    String
+  date        DateTime
+  type        String
+  description String
+  treatment   String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  animal      Animal   @relation(fields: [animalId], references: [id])
+}
+
+enum InventoryType {
+  FEED
+  MEDICAL_SUPPLY
+}
+
+model InventoryItem {
+  id          String        @id @default(cuid())
+  name        String
+  type        InventoryType
+  quantity    Float
+  unit        String
+  cost        Float?
+  notes       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model InventoryTransaction {
+  id            String      @id @default(cuid())
+  itemId        String
+  quantity      Float
+  date          DateTime    @default(now())
+  notes         String?
+}

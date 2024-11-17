@@ -1,0 +1,20 @@
+project-root/
+├── src/
+│   ├── app/
+│   │   └── (dashboard)/
+│   │       ├── feed/
+│   │       │   └── page.tsx
+│   │       └── health/
+│   │           └── page.tsx
+│   └── components/
+│       ├── feed/
+│       │   └── AddFeedStockDialog.tsx
+│       ├── health/
+│       │   ├── RecordMortalityDialog.tsx
+│       │   ├── AddVaccinationDialog.tsx
+│       │   └── AddMedicineDialog.tsx
+│       └── ui/
+│           ├── textarea.tsx
+│           ├── tabs.tsx
+│           └── select.tsx
+└── components.json 
