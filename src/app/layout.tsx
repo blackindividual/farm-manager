@@ -1,5 +1,14 @@
-import React from 'react';
-import { Toaster } from 'react-hot-toast';
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import { cn } from "@/lib/utils";
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Farm Manager',
+  description: 'Manage your farm inventory and animals',
+}
 
 export default function RootLayout({
   children,
@@ -8,9 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        <Toaster position="top-right" />
+      <body className={inter.className}>
+        <main className="min-h-screen bg-background">
+          {children}
+        </main>
       </body>
     </html>
   )
