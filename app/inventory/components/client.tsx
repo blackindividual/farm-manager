@@ -43,7 +43,11 @@ export const InventoryClient = () => {
         </Button>
       </div>
       <div className="mt-8">
-        <DataTable columns={columns} data={data} searchKey="name" />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <DataTable columns={columns} data={data} searchKey="name" />
+        )}
       </div>
     </>
   );

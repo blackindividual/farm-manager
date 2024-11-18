@@ -1,10 +1,22 @@
-import { db } from "@/lib/db";
+import { PrismaClient } from '@prisma/client';
 import { NextResponse } from "next/server";
+import { prisma } from '@/lib/prisma';
+import { db } from '../../../../lib/db';
+
+export type InventoryItem = {
+  id: string;
+  name: string;
+  type: string;
+  quantity: number;
+  unit: string;
+  cost: number | null;
+  notes: string | null;
+};
 
 export async function PATCH(
   req: Request,
   { params }: { params: { inventoryId: string } }
-) {
+): Promise<NextResponse> {
   try {
     const body = await req.json();
     const { name, type, quantity, unit, cost, notes } = body;
@@ -33,7 +45,7 @@ export async function PATCH(
 export async function DELETE(
   req: Request,
   { params }: { params: { inventoryId: string } }
-) {
+): Promise<NextResponse> {
   try {
     const deletedInventory = await db.inventoryItem.delete({
       where: {

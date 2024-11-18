@@ -9,8 +9,8 @@ import {
   DropdownMenuItem, 
   DropdownMenuLabel, 
   DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+} from "@radix-ui/react-dropdown-menu";
+import { Button } from "@radix-ui/react-button";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { InventoryColumn } from "./columns";
 

@@ -1,36 +1,9 @@
 "use client";
 
-import * as React from "react";
 import { useEffect, useState } from "react";
+import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
-
-interface ModalProps {
-  title: string;
-  description: string;
-  isOpen: boolean;
-  onClose: () => void;
-  children?: React.ReactNode;
-}
-
-const Modal: React.FC<ModalProps> = ({
-  title,
-  description,
-  isOpen,
-  onClose,
-  children
-}) => {
-  if (!isOpen) return null;
-  
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="bg-background p-6 rounded-lg">
-        <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-sm text-muted-foreground">{description}</p>
-        {children}
-      </div>
-    </div>
-  );
-};
+import React from "react";
 
 interface AlertModalProps {
   isOpen: boolean;

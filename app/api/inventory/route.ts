@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<NextResponse> {
   try {
     const body = await req.json();
     const { name, type, quantity, unit, cost, notes } = body;
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const inventoryItems = await db.inventoryItem.findMany({
       orderBy: {
