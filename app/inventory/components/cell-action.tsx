@@ -10,9 +10,10 @@ import {
   DropdownMenuLabel, 
   DropdownMenuTrigger
 } from "@radix-ui/react-dropdown-menu";
-import { Button } from "@radix-ui/react-button";
+import { Button } from "@/components/ui/button";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { InventoryColumn } from "./columns";
+import { cn } from "@/lib/utils";
 
 interface CellActionProps {
   data: InventoryColumn;
@@ -26,12 +27,18 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await fetch(`/api/inventory/${data.id}`, {
+      const response = await fetch(`/api/inventory/${data.id}`, {
         method: "DELETE",
       });
+      
+      if (!response.ok) {
+        throw new Error('Failed to delete item');
+      }
+      
       router.refresh();
     } catch (error) {
-      console.log(error);
+      console.error('Error deleting item:', error);
+      // Consider adding a toast notification here
     } finally {
       setLoading(false);
       setOpen(false);
