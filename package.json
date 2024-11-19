@@ -27,7 +27,7 @@
     "@supabase/supabase-js": "^2.46.1",
     "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
+    "clsx": "^latest",
     "jotai": "^2.10.2",
     "lucide-react": "^0.459.0",
     "lucide-vue-next": "^0.460.0",
@@ -38,7 +38,7 @@
     "react-hook-form": "^7.53.2",
     "react-hot-toast": "^2.4.1",
     "shadcn-ui": "^0.2.3",
-    "tailwind-merge": "^2.5.4",
+    "tailwind-merge": "^latest",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8",
     "zustand": "^5.0.1"
