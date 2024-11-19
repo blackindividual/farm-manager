@@ -19,20 +19,19 @@ import {
   DropdownMenuLabel, 
 
   DropdownMenuTrigger
+} from "@radix-ui/react-dropdown-menu";
 
-} from "@/app/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
-import { Button } from "@/app/components/ui/button";
-
-import { AlertModal } from "@/app/components/modals/alert-modal";
+import { AlertModal } from "@/components/modals/alert-modal";
 
 import { InventoryColumn } from "./columns";
 
 import { cn } from "@/lib/utils";
 
-import { Form } from "@/app/components/ui/form";
+import { Form } from "@/components/ui/form";
 
-import { Input } from "@/app/components/ui/input";
+import { Input } from "@/components/ui/input";
 
 
 
