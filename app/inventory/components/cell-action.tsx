@@ -19,7 +19,7 @@ import {
   DropdownMenuLabel, 
 
   DropdownMenuTrigger
-} from "@radix-ui/react-dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 import { Button } from "@/components/ui/button";
 
