@@ -1,40 +1,27 @@
-import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
 
-export async function POST(req: Request): Promise<NextResponse> {
+export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, type, quantity, unit, cost, notes } = body;
-
+    
     const inventoryItem = await db.inventoryItem.create({
       data: {
-        name,
-        type,
-        quantity: parseFloat(quantity),
-        unit,
-        cost: cost ? parseFloat(cost) : null,
-        notes,
-      },
+        ...body
+      }
     });
 
     return NextResponse.json(inventoryItem);
   } catch (error) {
-    console.log("[INVENTORY_POST]", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return new NextResponse("Internal error", { status: 500 });
   }
 }
 
-export async function GET(): Promise<NextResponse> {
+export async function GET() {
   try {
-    const inventoryItems = await db.inventoryItem.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-
+    const inventoryItems = await db.inventoryItem.findMany();
     return NextResponse.json(inventoryItems);
   } catch (error) {
-    console.log("[INVENTORY_GET]", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return new NextResponse("Internal error", { status: 500 });
   }
 } 
