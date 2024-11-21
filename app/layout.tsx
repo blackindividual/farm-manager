@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { MainNav } from "@/components/main-nav";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        {children}
+        <div className="border-b">
+          <div className="flex h-16 items-center px-4">
+            <MainNav />
+          </div>
+        </div>
+        <Toaster />
+        <main className="h-full">{children}</main>
       </body>
     </html>
   );
