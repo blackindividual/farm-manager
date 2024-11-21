@@ -1,3 +1,5 @@
 {
+  "/page": "app/page.js",
+  "/inventory/new/page": "app/inventory/new/page.js",
   "/inventory/page": "app/inventory/page.js"
 }

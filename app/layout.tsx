@@ -18,14 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
-        <div className="border-b">
+      <body className={`${inter.className} min-h-screen flex flex-col`} suppressHydrationWarning>
+        <header className="border-b">
           <div className="flex h-16 items-center px-4">
             <MainNav />
           </div>
-        </div>
+        </header>
         <Toaster />
-        <main className="h-full">{children}</main>
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   );

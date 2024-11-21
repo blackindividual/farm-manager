@@ -13,15 +13,25 @@ export const InventoryClient = () => {
   const router = useRouter();
   const [data, setData] = useState<InventoryColumn[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('Fetching from:', '/api/inventory');
         const response = await fetch('/api/inventory');
-        const inventoryData = await response.json();
-        setData(inventoryData);
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('Received data:', data);
+        setData(data);
       } catch (error) {
-        console.error('Error fetching inventory:', error);
+        console.error('Detailed fetch error:', error);
+        setError('Failed to load inventory data');
       } finally {
         setLoading(false);
       }
@@ -29,6 +39,10 @@ export const InventoryClient = () => {
 
     fetchData();
   }, []);
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
 
   return (
     <>
