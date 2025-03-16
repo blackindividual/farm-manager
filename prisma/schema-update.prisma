@@ -1,0 +1,12 @@
+// Add this model to your existing schema.prisma file
+
+model FarmLog {
+  id          String   @id @default(cuid())
+  date        DateTime
+  farmSection String
+  logType     String
+  logValue    String
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

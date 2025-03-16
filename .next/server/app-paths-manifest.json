@@ -1,5 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/inventory/new/page": "app/inventory/new/page.js",
-  "/inventory/page": "app/inventory/page.js"
+  "/dashboard/broiler-dashboard/page": "app/dashboard/broiler-dashboard/page.js",
+  "/dashboard/vegetable-patch/page": "app/dashboard/vegetable-patch/page.js",
+  "/dashboard/layer-dashboard/page": "app/dashboard/layer-dashboard/page.js"
 }

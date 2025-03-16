@@ -23,7 +23,10 @@ export const InventoryClient = () => {
         console.log('Response status:', response.status);
         
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          // Try to get more detailed error information
+          const errorData = await response.json().catch(() => null);
+          console.error('Error data:', errorData);
+          throw new Error(`HTTP error! status: ${response.status}${errorData ? ': ' + errorData.error : ''}`);
         }
         
         const data = await response.json();
@@ -31,7 +34,7 @@ export const InventoryClient = () => {
         setData(data);
       } catch (error) {
         console.error('Detailed fetch error:', error);
-        setError('Failed to load inventory data');
+        setError(`Failed to load inventory data: ${error.message}`);
       } finally {
         setLoading(false);
       }

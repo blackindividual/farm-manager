@@ -1,99 +1,74 @@
-import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react'
+"use client"
+
+import { Flame, Egg, SproutIcon as Seedling } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ExpensesTable } from './components/expenses-table'
-import { FlockDetails } from './components/flock-details'
-import { PerformanceMetrics } from './components/performance-metrics'
 
-const StatsCard = ({ title, icon }: { title: string, icon: string }) => (
-  <Card className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-    <CardContent className="pt-6">
-      <div className="flex justify-between items-center mb-4">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <span className="text-2xl">{icon}</span>
-      </div>
-      <div className="text-2xl font-bold mb-2">-</div>
-      <div className="flex items-center text-sm text-muted-foreground">
-        <ArrowUpIcon className="w-4 h-4 mr-1" />
-        <span>-%</span>
-      </div>
-    </CardContent>
-  </Card>
-)
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="space-y-6">
-      {/* Hero Section */}
-      <div className="flex flex-col items-center justify-center p-8 text-center bg-muted/50">
-        <h1 className="text-4xl font-bold mb-6">Farm Manager</h1>
-        <div className="max-w-2xl mb-8">
-          <p className="text-xl text-muted-foreground">
-            Efficiently manage your farm operations with our comprehensive management system
-          </p>
+    <div className="flex flex-col min-h-screen bg-[#f8f7f4]">
+      <main className="flex-1 container mx-auto p-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4">Farm Manager</h1>
+          <p className="text-gray-600">Manage your farm operations efficiently</p>
         </div>
-        <div className="flex gap-4">
-          <Link href="/inventory">
-            <Button size="lg">Get Started</Button>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {/* Ensure paths match your folder structure */}
+          <Link href="/dashboard/broiler-dashboard">
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+              <CardHeader>
+                <Flame className="w-12 h-12 text-orange-500 mb-4" />
+                <CardTitle>Broiler Management</CardTitle>
+                <CardDescription>Track broiler growth, feed consumption, and performance metrics</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Monitor flock health</li>
+                  <li>• Track feed efficiency</li>
+                  <li>• Analyze growth rates</li>
+                </ul>
+              </CardContent>
+            </Card>
           </Link>
-          <Link href="/docs">
-            <Button variant="outline" size="lg">View Documentation</Button>
+
+          {/* Ensure paths match your folder structure */}
+          <Link href="/dashboard/layer-dashboard">
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+              <CardHeader>
+                <Egg className="w-12 h-12 text-yellow-500 mb-4" />
+                <CardTitle>Layer Management</CardTitle>
+                <CardDescription>Monitor egg production and layer performance</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Track egg production</li>
+                  <li>• Monitor feed intake</li>
+                  <li>• Manage layer health</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Ensure paths match your folder structure */}
+          <Link href="/dashboard/vegetable-patch">
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+              <CardHeader>
+                <Seedling className="w-12 h-12 text-green-500 mb-4" />
+                <CardTitle>Vegetable Patch</CardTitle>
+                <CardDescription>Manage your vegetable cultivation and harvests</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Plan crop rotations</li>
+                  <li>• Track harvests</li>
+                  <li>• Monitor growth</li>
+                </ul>
+              </CardContent>
+            </Card>
           </Link>
         </div>
-      </div>
-
-      {/* Dashboard Section */}
-      <div className="p-6 space-y-6 bg-background">
-        <h2 className="text-2xl font-bold tracking-tight">Broiler Farm Dashboard</h2>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <StatsCard title="Active Batches" icon="🐥" />
-          <StatsCard title="Total Birds" icon="🐔" />
-          <StatsCard title="Average FCR" icon="📊" />
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-            <FlockDetails />
-          </div>
-          <div className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-            <ExpensesTable />
-          </div>
-        </div>
-
-        <div className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-          <PerformanceMetrics />
-        </div>
-
-        {/* Recent Activity */}
-        <Card className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-          <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-4">
-                <span className="text-blue-500 text-2xl">•</span>
-                <div>
-                  <p className="text-sm font-medium">-</p>
-                  <p className="text-xs text-muted-foreground">-</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="text-green-500 text-2xl">•</span>
-                <div>
-                  <p className="text-sm font-medium">-</p>
-                  <p className="text-xs text-muted-foreground">-</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      </main>
     </div>
   )
 }

@@ -42,16 +42,16 @@ enum InventoryType {
   MEDICAL_SUPPLY
 }
 
+// If this model doesn't exist, we need to add it
 model InventoryItem {
-  id          String        @id @default(cuid())
+  id          String   @id @default(uuid())
   name        String
-  type        InventoryType
-  quantity    Float
+  category    String
+  quantity    Int
   unit        String
-  cost        Float?
-  notes       String?
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model InventoryTransaction {
